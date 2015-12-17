@@ -67,17 +67,18 @@ angular.module('ionic.weather.directives', [])
 
         $rootScope.$on('settings.changed', function(settings) {
           var units = Settings.get('tempUnits');
-
+            
           if($scope.forecast) {
 
             var forecast = $scope.forecast;
             var current = $scope.current;
-
+        
             if(units == 'f') {
               $scope.highTemp = forecast.forecastday[0].high.fahrenheit;
               $scope.lowTemp = forecast.forecastday[0].low.fahrenheit;
               $scope.currentTemp = Math.floor(current.temp_f);
             } else {
+                       
               $scope.highTemp = forecast.forecastday[0].high.celsius;
               $scope.lowTemp = forecast.forecastday[0].low.celsius;
               $scope.currentTemp = Math.floor(current.temp_c);
@@ -87,7 +88,7 @@ angular.module('ionic.weather.directives', [])
 
         $scope.$watch('current', function(current) {
           var units = Settings.get('tempUnits');
-
+                      alert("hello2 :"+JSON.stringify(units));
           if(current) {
             if(units == 'f') {
               $scope.currentTemp = Math.floor(current.currently.temperature);

@@ -18,9 +18,7 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
   $ionicPlatform.ready(function() {
     // Hide the status bar
     if(window.StatusBar) {
-      //StatusBar.hide();
-                       
-                       
+      StatusBar.hide();
     }
   });
 
@@ -46,7 +44,6 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
     Flickr.search(locString, lat, lng).then(function(resp) {
       var photos = resp.photos;
       if(photos.photo.length) {
-                                            
         $scope.bgImages = photos.photo;
         _this.cycleBgImages();
       }
@@ -77,7 +74,7 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
       if($scope.bgImages) {
         $scope.activeBgImage = $scope.bgImages[$scope.activeBgImageIndex++ % $scope.bgImages.length];
       }
-      //$timeout(cycle, 10000);
+      $timeout(cycle, 10000);
     });
   };
 
