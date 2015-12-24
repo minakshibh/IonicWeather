@@ -1,4 +1,4 @@
-angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weather.filters', 'ionic.weather.directives'])
+angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weather.filters', 'ionic.weather.directives','ngSanitize'])
 
 .constant('WUNDERGROUND_API_KEY', '1cc2d3de40fa5af0')
 
@@ -21,7 +21,7 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
       StatusBar.hide();
     }
   });
-
+  
   $scope.activeBgImageIndex = 0;
 
   $scope.showSettings = function() {
@@ -89,7 +89,7 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
       });
       _this.getCurrent(lat, lng);
     }, function(error) {
-      alert('Unable to get current location: ' + error);
+      //alert('Unable to get current location: ' + error);
     });
   };
 
@@ -107,6 +107,7 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
 
   $scope.closeSettings = function() {
     $scope.modal.hide();
+    
   };
 
 });

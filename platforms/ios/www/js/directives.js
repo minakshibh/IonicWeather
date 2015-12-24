@@ -71,36 +71,35 @@ angular.module('ionic.weather.directives', [])
           if($scope.forecast) {
 
             var forecast = $scope.forecast;
+                      
             var current = $scope.current;
-        
+             
             if(units == 'f') {
               $scope.highTemp = forecast.forecastday[0].high.fahrenheit;
               $scope.lowTemp = forecast.forecastday[0].low.fahrenheit;
               $scope.currentTemp = Math.floor(current.temp_f);
             } else {
-                       
-              $scope.highTemp = forecast.forecastday[0].high.celsius;
-              $scope.lowTemp = forecast.forecastday[0].low.celsius;
-              $scope.currentTemp = Math.floor(current.temp_c);
+              $scope.highTemp = (((forecast.forecastday[0].high.celsius - 32) / 1.8).toFixed(1));
+              $scope.lowTemp =  (((forecast.forecastday[0].low.celsius - 32) / 1.8).toFixed(1));
+              $scope.currentTemp = Math.floor((((current.temp_c - 32) / 1.8).toFixed(1)));
             }
           }
         });
 
         $scope.$watch('current', function(current) {
           var units = Settings.get('tempUnits');
-                      alert("hello2 :"+JSON.stringify(units));
           if(current) {
             if(units == 'f') {
               $scope.currentTemp = Math.floor(current.currently.temperature);
             } else {
-              $scope.currentTemp = Math.floor(current.currently.temperature);
+              $scope.currentTemp = Math.floor(((((current.currently.temperature - 32) / 1.8).toFixed(1))));
             }
             if(units == 'f') {
               $scope.highTemp = Math.floor(current.daily.data[0].temperatureMax);
               $scope.lowTemp = Math.floor(current.daily.data[0].temperatureMin);
             } else {
-              $scope.highTemp = Math.floor(current.daily.data[0].temperatureMax);
-              $scope.lowTemp = Math.floor(current.daily.data[0].temperatureMin);
+              $scope.highTemp = Math.floor((((current.daily.data[0].temperatureMax - 32) / 1.8).toFixed(1)));
+              $scope.lowTemp = Math.floor((((current.daily.data[0].temperatureMin - 32) / 1.8).toFixed(1)));
             }
           }
         });

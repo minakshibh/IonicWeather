@@ -26,6 +26,8 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+    
+    <gap:plugin name="org.apache.cordova.core.geolocation" />
     <name>IonicWeather</name>
     <description>
         A sample Ionic Weather app

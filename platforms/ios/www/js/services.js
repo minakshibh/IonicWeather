@@ -84,10 +84,11 @@ var forecastioWeather = ['$q', '$resource', '$http', 'FORECASTIO_KEY', function(
       method: 'JSONP'
     }
   });
-
+        
+    
   return {
     getAtLocation: function(lat, lng) {
-      return $http.jsonp(url + lat + ',' + lng + '?callback=JSON_CALLBACK');
+    return $http.jsonp(url + lat + ',' + lng + '?callback=JSON_CALLBACK');
     },
     getForecast: function(locationString) {
     },
@@ -214,6 +215,7 @@ angular.module('ionic.weather.services', ['ngResource'])
     safe_search: 1,
     jsoncallback: 'JSON_CALLBACK',
     api_key: FLICKR_API_KEY,
+    accuracy :3,
     format: 'json'
   }, {
     get: {
@@ -228,9 +230,9 @@ angular.module('ionic.weather.services', ['ngResource'])
       console.log('Searching flickr for tags', tags);
 
       flickrSearch.get({
-        tags: tags,
+        //tags: tags,
         lat: lat,
-        lng: lng
+        lng: lng,
       }, function(val) {
         q.resolve(val);
       }, function(httpResponse) {
