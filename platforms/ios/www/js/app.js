@@ -74,7 +74,7 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
       if($scope.bgImages) {
         $scope.activeBgImage = $scope.bgImages[$scope.activeBgImageIndex++ % $scope.bgImages.length];
       }
-      $timeout(cycle, 10000);
+      $timeout(cycle, 50000);
     });
   };
 
@@ -94,6 +94,13 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
   };
 
   $scope.refreshData();
+            
+            $scope.$on('modal.hidden', function() {
+                       // Execute action
+                       $scope.refreshData();
+                       });
+            
+           
 })
 
 .controller('SettingsCtrl', function($scope, Settings) {
@@ -107,7 +114,7 @@ angular.module('ionic.weather', ['ionic', 'ionic.weather.services', 'ionic.weath
 
   $scope.closeSettings = function() {
     $scope.modal.hide();
-    
+            
   };
 
 });

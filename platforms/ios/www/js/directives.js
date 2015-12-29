@@ -50,7 +50,7 @@ angular.module('ionic.weather.directives', [])
         if($scope.localtz) {
           $scope.currentTime = $filter('date')(+(new Date), 'h:mm') + $scope.localtz;
         }
-        $timeout(checkTime, 500);
+        $timeout(checkTime, 5000);
       });
     }
   }
